@@ -1,0 +1,312 @@
+:root {
+    --bg: #ffffff;
+    --text: #333333;
+    --text-light: #666666;
+    --heart-shadow: rgba(224, 36, 94, 0.3);
+    --card-bg: #f8f8f8;
+    --btn-bg: #f0f0f0;
+    --btn-hover: #e0e0e0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.dark-mode {
+    --bg: #1a1a2e;
+    --text: #ffffff;
+    --text-light: #aaaaaa;
+    --heart-shadow: rgba(255, 107, 107, 0.4);
+    --card-bg: #2d2d44;
+    --btn-bg: #2d2d44;
+    --btn-hover: #3d3d5c;
+    --shadow: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background var(--transition), color var(--transition);
+}
+
+.dark-mode-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--text);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+.dark-mode-btn:hover {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: 0 6px 25px var(--shadow);
+}
+
+.dark-mode-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 100%;
+    max-width: 800px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* ===== WELCOME SECTION ===== */
+.welcome-section {
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.welcome-section.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-text {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24, #ff6b6b);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s ease infinite;
+    text-shadow: none;
+    margin-bottom: 20px;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== FLOWER ANIMATIONS ===== */
+.flower-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.flower {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: floatFlower 4s ease-in-out infinite;
+    opacity: 0;
+}
+
+/* Different starting positions */
+.flower1 { left: 5%; top: 20%; animation-delay: 0s; }
+.flower2 { left: 15%; top: 60%; animation-delay: 0.5s; }
+.flower3 { right: 15%; top: 30%; animation-delay: 1s; }
+.flower4 { right: 5%; top: 70%; animation-delay: 1.5s; }
+.flower5 { left: 45%; top: 10%; animation-delay: 2s; }
+.flower6 { left: 25%; top: 80%; animation-delay: 2.5s; }
+.flower7 { right: 25%; top: 85%; animation-delay: 3s; }
+.flower8 { left: 50%; top: 90%; animation-delay: 3.5s; }
+
+@keyframes floatFlower {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.5) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(1.2) rotate(360deg);
+    }
+}
+
+/* ===== MAIN CONTENT (Hidden initially) ===== */
+.main-content {
+    text-align: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    width: 100%;
+    position: absolute; 
+}
+
+.main-content.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.main-content.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+
+/* ===== HEART ===== */
+.heart-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+.heart {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: url('https://cssanimation.rocks/images/posts/steps/heart.png') no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--heart-shadow);
+}
+
+.heart:hover {
+    transform: scale(1.05);
+}
+
+.heart:active {
+    transform: scale(0.95);
+}
+
+/* Heart animation state */
+.heart.animating {
+    animation: fave-heart 1s steps(28) forwards;
+}
+
+@keyframes fave-heart {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -2800px 0;
+    }
+}
+
+/* Heart instruction text */
+.heart-instruction {
+    margin-top: 15px;
+    color: var(--text-light);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    animation: pulseText 2s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+
+
+/* ===== FLOATING HEARTS ===== */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.float-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.15;
+    animation: floatAround 20s linear infinite;
+}
+
+@keyframes floatAround {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.15;
+    }
+    90% {
+        opacity: 0.15;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .welcome-text {
+        font-size: 2.5rem;
+    }
+    
+    .heart {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .flower {
+        font-size: 1.8rem;
+    }
+    
+    .dark-mode-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+    
+    .heart {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .flower {
+        font-size: 1.5rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 80%;
+    }
+}

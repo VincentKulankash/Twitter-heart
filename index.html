@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Heart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <!-- Welcome Section this section is supposed to load first using our script we will set the onload function so that this shows up first for about 5 seconds before anything else loads up  -->
+        <div id="welcomeSection" class="welcome-section">
+            <h1 class="welcome-text">💕 Hey Baby 💕</h1>
+            <div class="flower-container">
+                <span class="flower flower1">🌸</span>
+                <span class="flower flower2">🌺</span>
+                <span class="flower flower3">🌷</span>
+                <span class="flower flower4">🌻</span>
+                <span class="flower flower5">🌹</span>
+                <span class="flower flower6">🌸</span>
+                <span class="flower flower7">🌺</span>
+                <span class="flower flower8">🌷</span>
+            </div>
+        </div>
+
+
+        <!-- Main Content Section this will contain our heart that is supposed to be displayed after the welcome section with a liking animation that loads up after the welcome section-->
+        <div id="mainContent" class="main-content hidden">
+            
+            <div class="heart-container">
+                <div id="heart" class="heart"></div>
+                <p class="heart-instruction">✨ Hover over here✨</p>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <div class="floating-hearts">
+        <span class="float-heart" style="left: 5%; animation-delay: 0s;">💕</span>
+        <span class="float-heart" style="left: 15%; animation-delay: 1s;">💖</span>
+        <span class="float-heart" style="left: 85%; animation-delay: 2s;">💗</span>
+        <span class="float-heart" style="left: 92%; animation-delay: 0.5s;">💝</span>
+        <span class="float-heart" style="left: 50%; animation-delay: 1.5s;">❤️</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
